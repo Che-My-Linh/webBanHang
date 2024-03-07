@@ -1,0 +1,6 @@
+D:\20T1020441\20T1020441\DomainModels\bin\Debug\DomainModels.dll
+D:\20T1020441\20T1020441\DomainModels\bin\Debug\DomainModels.pdb
+D:\20T1020441\20T1020441\DomainModels\obj\Debug\20T1020441.DomainModels.csproj.AssemblyReference.cache
+D:\20T1020441\20T1020441\DomainModels\obj\Debug\20T1020441.DomainModels.csproj.CoreCompileInputs.cache
+D:\20T1020441\20T1020441\DomainModels\obj\Debug\DomainModels.dll
+D:\20T1020441\20T1020441\DomainModels\obj\Debug\DomainModels.pdb

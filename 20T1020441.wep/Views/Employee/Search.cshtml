@@ -1,0 +1,167 @@
+﻿@model _20T1020441.Web.Models.EmployeeSearchOutput
+
+@{
+    Layout = null;
+}
+<p>Có <strong>@string.Format("{0:N0}", Model.Rowcount)</strong> nhà cung cấp trong tổng số <strong>@string.Format("{0:N0}", @Model.PageCount) </strong>trang</p>
+
+@* <p> có <strong>@ViewBag.PageCount</strong> bảng ghi trong tổng số <strong>@ViewBag.PageCount</strong> trang </p>
+
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Ảnh</th>
+                    <th>Họ đệm</th>
+                    <th>Tên </th>
+                    <th>Ngày sinh</th>
+                    <th>Notes</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><img src="@item.Photo" class="img-rounded" alt="Cinque Terre" style="width:90%"></td>
+                        <td>@item.LastName</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.BirthDate</td>
+                        <td>@item.Notes</td>
+                        <td>@item.Email</td>
+                        <td>@item.Password</td>
+                        <td class="text-right">
+                            <a href="~/Employee/Edit/@item.EmployeeID" class="btn btn-success">
+                                <i class="glyphicon glyphicon-edit" title="Sửa"></i>
+                            </a>
+                            <a href="~/Employee/Delete/@item.EmployeeID" class="btn btn-danger">
+                                <i class="glyphicon glyphicon-trash" title="xóa"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+
+
+        <div class="text-center">
+            <ul class="pagination">
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+            </ul>
+        </div>
+
+    </div>*@
+
+@*<div class="row ">
+        @foreach (var item in Model.Data)
+        {
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="box-body box-profile">
+                        <span class="input-group-btn bg-primary">
+                            <a href="~/Employee/Delete/@item.EmployeeID" class="btn btn-danger pull-right">
+                                <i class="glyphicon glyphicon-trash" title="Xóa"></i>
+                            </a>
+                            <a href="~/Employee/Edit/@item.EmployeeID" class="btn btn-success pull-right ">
+                                <i class="glyphicon glyphicon-edit " title="Sửa"></i>
+                            </a>
+                        </span>
+                        <div class="el-card-item">
+                            <div class="el-card-avatar el-overlay-1">
+                                <img src="@item.Photo" alt="employee photo" class="img-responsive img-circle" style="margin-left: auto; margin-right: auto">
+                            </div>
+                            <div class="el-card-content text-center">
+                                <h3>@item.LastName</h3> <h3>@item.FirstName</h3>
+                            </div>
+                            <ul class="nav nav-stacked">
+                                <li>
+                                    <p class="form-control-static" style="font-size: 15px;">Ngày sinh: <span class="pull-right" style="margin-right: 10px;">@item.BirthDate</span></p>
+                                </li>
+                                <li>
+                                    <p class="form-control-static" style="font-size: 15px;">Email: <span class="pull-right" style="margin-right: 10px;">@item.Email</span></p>
+                                </li>
+                                <li>
+                                    <p class="form-control-static" style="font-size: 15px;">Mật khẩu: <span class="pull-right" style="margin-right: 5px;">@item.Password</span></p>
+                                </li>
+                                <li>
+                                    <p class="form-control-static" style="font-size: 15px;">Ghi chú: <span class="pull-right" style="margin-right: 5px;">@item.Notes</span></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>*@
+
+
+
+@foreach (var item in Model.Data)
+{
+    
+        <div class="box-body" style="width: 990px; height: 390px; border-width: 1px; top: 217px; left: 45px;">
+            <div class="box-body box-profile">
+                <span class="input-group-btn bg-primary">
+                    <a href="~/Employee/Delete/@item.EmployeeID" class="btn btn-danger pull-right">
+                        <i class="glyphicon glyphicon-trash" title="Xóa"></i>
+                    </a>
+                    <a href="~/Employee/Edit/@item.EmployeeID" class="btn btn-success pull-right ">
+                        <i class="glyphicon glyphicon-edit " title="Sửa"></i>
+                    </a>
+                </span>
+                <div>
+                    <table class="table table-bordered table-hover">                        
+                        <tr>
+                            <td rowspan="6" style="width: 250px; height: 200px; border-width: 10px; top: 217px; "><img src="~/Photo/@item.Photo" alt="employee photo" class="img-responsive img-rounded" style="margin-left: auto; margin-right: auto; width: 206px; height: 245px;">   </td>
+                            <td>
+                                <h3>@item.LastName @item.FirstName</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ngày sinh :    @item.BirthDate </td>
+                        </tr>
+                        <tr>
+                            <td>Email :    @item.Password </td>
+                        </tr>
+                        <tr>
+                            <td>Mật khẩu :    @item.Password </td>
+                        </tr>
+                        <tr>
+                            <td>Chú thích :    @item.Notes </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+}
+
+
+    <div class="col-sm-7 text-center">
+        <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+            <ul class="pagination">
+                @for (int i = 1; i <= Model.PageCount; i++)
+                {
+                    if (i == Model.Page)
+                    {
+                        <li class="paginate_button active">
+                            <a href="#">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="paginate_button">
+                            <a href="javascript:;" onclick="doSearch(@i)">@i</a>
+                        </li>
+                    }
+
+                }
+            </ul>
+        </div>
+    </div>

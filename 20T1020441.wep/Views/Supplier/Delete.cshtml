@@ -1,0 +1,78 @@
+﻿@model _20T1020441.DomainModels.Supplier
+@{
+    ViewBag.Title = $"Xóa {Model.SupplierName}";
+}
+
+<div class="box box-primary">
+    <div class="box-body">
+        <form class="form-horizontal" action="~/Supplier/Delete/@Model.SupplierID">
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Tên nhà cung cấp</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">@Model.SupplierName</p>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Tên giao dịch</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">@Model.ContactName</p>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Địa chỉ</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">@Model.Address</p>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Điện thoại</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">@Model.Phone</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Quốc gia</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">@Model.Country</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Thành phố</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">@Model.City</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Mã bưu chính</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">@Model.PostalCode</p>
+                </div>
+            </div>
+
+
+            @* đây là hai nút trong Bổ sung DL*@
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-floppy-disk"></i> đông ý xóa
+                    </button>
+
+                    <a href="~/Supplier" class="btn btn-warning">
+                        quay lai
+                    </a>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <!-- search form -->
+        @* <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>*@
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            @* <li class="header"></li>   //khong biết xóa được ko*@
+            <li class="treeview">
+                <a href="~/">
+                    <i class="fa fa-dashboard"></i> <span>Trang Chủ</span>
+                </a>
+            </li>
+
+            <li class="treeview active">
+                <a href="#">
+                    <i class="fa fa-folder"></i> <span>Quản Lý Dữ Liệu</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="~/Customer"><i class="fa fa-user"></i> Khách Hàng</a></li>
+                    <li><a href="~/Employee"><i class="fa fa-user-circle"></i> Nhân Viên</a></li>
+                    <li><a href="~/Supplier"><i class="fa fa-truck"></i> Nhà Cung Cấp</a></li>
+                    <li><a href="~/Shipper"><i class="fa fa-archive"></i> Người Giao Hàng</a></li>
+                    <li><a href="~/Category"><i class="fa fa-shopping-cart"></i> Loại Hàng</a></li>
+                    <li><a href="~/Product"><i class="fa fa-circle-o"></i>Mặt hàng</a></li>
+                </ul>
+            </li>
+
+
+            <li class="treeview active">
+                <a href="#">
+                    <i class="fa fa-folder"></i> <span>Bán Hàng</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="~/Order/Create"><i class="fa fa-circle-o"></i> Lập Đơn Hàng</a></li>
+                    <li><a href="~/Order"><i class="fa fa-circle-o"></i>Tra Cứu Đơn Hàng</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+

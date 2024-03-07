@@ -1,0 +1,60 @@
+﻿@model _20T1020441.Web.Models.CategorySearchOutput
+
+@{
+    Layout = null;
+}
+<p>Có <strong>@string.Format("{0:N0}", Model.Rowcount)</strong> nhà cung cấp trong tổng số <strong>@string.Format("{0:N0}", @Model.PageCount) </strong>trang</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr class="bg-primary">
+            <th>Tên loại hàng</th>
+            <th>Description</th>
+            <th>ParentCategoryId</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>@item.CategoryName</td>
+                <td>@item.Description</td>
+                <td>@item.ParentCategoryId</td>
+                <td class="text-right">
+                    <a href="~/Category/Edit/@item.CategoryID" class="btn btn-success">
+                        <i class="glyphicon glyphicon-edit" title="Sửa"></i>
+                    </a>
+                    <a href="~/Category/Delete/@item.CategoryID" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash" title="xóa"></i>
+                    </a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+<div class="col-sm-7 text-center">
+    <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+        <ul class="pagination">
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                if (i == Model.Page)
+                {
+                    <li class="paginate_button active">
+                        <a href="#">@i</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="paginate_button">
+                        <a href="javascript:;" onclick="doSearch(@i)">@i</a>
+                    </li>
+                }
+
+            }
+        </ul>
+    </div>
+</div>

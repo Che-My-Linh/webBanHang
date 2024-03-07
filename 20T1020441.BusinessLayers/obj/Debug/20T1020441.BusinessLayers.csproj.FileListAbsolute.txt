@@ -1,0 +1,6 @@
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\bin\Debug\20T1020441.BusinessLayers.dll
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\bin\Debug\20T1020441.BusinessLayers.pdb
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\obj\Debug\20T1020441.BusinessLayers.csproj.AssemblyReference.cache
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\obj\Debug\20T1020441.BusinessLayers.csproj.CoreCompileInputs.cache
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\obj\Debug\20T1020441.BusinessLayers.dll
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\obj\Debug\20T1020441.BusinessLayers.pdb

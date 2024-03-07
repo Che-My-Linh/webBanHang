@@ -1,0 +1,85 @@
+﻿@model _20T1020441.DomainModels.Product
+@{    ViewBag.Title = "Bổ sung mặt hàng";
+}
+
+<div class="box box-primary">
+    <div class="box-header with-border ">
+    </div>
+
+    <div class="box-body">
+        <form class="form-horizontal" action="~/Product/Save" method="post">
+            @Html.AntiForgeryToken()
+
+            @Html.HiddenFor(m => m.ProductID)
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Tên mặt hàng:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ProductName, "", new { @style = "color:#DC143C;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Loại hàng:</label>
+                <div class="col-sm-10">
+                    @Html.DropDownListFor(m => m.CategoryID, _20T1020441.Web.SelectListHelper.Category(), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CategoryID, "", new { @style = "color:#DC143C;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Nhà cung cấp:</label>
+                <div class="col-sm-10">
+                    @Html.DropDownListFor(m => m.SupplierID, _20T1020441.Web.SelectListHelper.Supplier(), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.SupplierID, "", new { @style = "color:#DC143C;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Đơn vị tính:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Unit, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Unit, "", new { @style = "color:#DC143C;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Giá hàng:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Price, "", new { @style = "color:#DC143C;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email" style="font-size: small">Ảnh minh họa</label>
+                <div class="col-sm-10">
+                    <img id="photo" src="~/Photo/@Model.Photo"
+                         class="profile-user-img "
+                         alt="Product Image">
+                    @Html.HiddenFor(m => m.Photo)
+                    <input type="file"
+                           style="margin-top: 8px"
+                           name="uploadPhoto"
+                           onchange="document.getElementById('photo').src = window.URL.createObjectURL(this.files[0])" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"></i> Lưu dữ liệu
+                    </button>
+                    <a class="btn btn-warning" href="~/product">
+                        <i class="fa fa-ban"></i> Quay lại
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="box-footer text-center">
+    </div>
+
+</div>
+
+

@@ -1,0 +1,227 @@
+﻿@model _20T1020441.Web.Models.OrderModel
+@{
+    ViewBag.Title = "Quản lý đơn hàng";
+}
+
+<div class="box box-primary">
+    <div class="box-header text-right">
+        <div class="btn-group">
+            <!-- //TODO
+            YÊU CẦU: Đối với các chức năng liên quan đến đơn hàng, chỉ được hiển thị menu/nút của những chức năng
+            phù hợp với trạng thái hiện tại của đơn hàng (ví dụ: Nếu đơn hàng chưa được chấp nhận thì không được chuyển để giao hàng)
+            -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Xử lý đơn hàng <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    @if (Model.Status == 1)
+                    {
+                        <li><a href="~/Order/Accept/@Model.OrderID" onclick="return confirm('Xác nhận duyệt chấp nhận đơn hàng này?')">Duyệt đơn hàng</a></li>
+                        <li class="divider"></li>
+                        <li><a href="~/Order/Cancel/@Model.OrderID" onclick="return confirm('Xác nhận hủy đơn hàng này?')">Hủy đơn hàng</a></li>
+                        <li><a href="~/Order/Reject/@Model.OrderID" onclick="return confirm('Xác nhận từ chối đơn hàng này?')">Từ chối đơn hàng</a></li>
+                    } 
+                    @if (Model.Status == 2)
+                    {
+                        <li><a href="~/Order/Shipping/@Model.OrderID" class="btn-modal">Chuyển giao hàng</a></li>
+                        <li class="divider"></li>
+                        <li><a href="~/Order/Cancel/@Model.OrderID" onclick="return confirm('Xác nhận hủy đơn hàng này?')">Hủy đơn hàng</a></li>
+                    }
+                    @if (Model.Status == 3)
+                    {
+                        <li><a href="~/Order/Finish/@Model.OrderID" onclick="return confirm('Xác nhận đơn hàng đã hoàn tất thành công?')">Xác nhận hoàn tất đơn hàng</a></li>
+                        <li class="divider"></li>
+                        <li><a href="~/Order/Cancel/@Model.OrderID" onclick="return confirm('Xác nhận hủy đơn hàng này?')">Hủy đơn hàng</a></li>
+                    }
+                    @if (Model.Status == 4)
+                    {
+                        <li><a href="~/Order/Cancel/@Model.OrderID" onclick="return confirm('Xác nhận hủy đơn hàng này?')">Hủy đơn hàng</a></li>
+                    }
+                    @*<li><a href="~/Order/Accept/@Model.OrderID" onclick="return confirm('Xác nhận duyệt chấp nhận đơn hàng này?')">Duyệt đơn hàng</a></li>
+                        <li><a href="~/Order/Shipping/@Model.OrderID" class="btn-modal">Chuyển giao hàng</a></li>
+                        <li><a href="~/Order/Finish/@Model.OrderID" onclick="return confirm('Xác nhận đơn hàng đã hoàn tất thành công?')">Xác nhận hoàn tất đơn hàng</a></li>
+                        <li class="divider"></li>
+                        <li><a href="~/Order/Cancel/@Model.OrderID" onclick="return confirm('Xác nhận hủy đơn hàng này?')">Hủy đơn hàng</a></li>
+                        <li><a href="~/Order/Reject/@Model.OrderID" onclick="return confirm('Xác nhận từ chối đơn hàng này?')">Từ chối đơn hàng</a></li>*@
+                </ul>
+            </div>
+            @if (Model.Status == 1 || Model.Status == -1 || Model.Status == -2)
+            {
+                <a href="~/Order/Delete/@Model.OrderID" class="btn btn-sm btn-danger" onclick="return confirm('Có chắc chắn muốn xóa đơn hàng này không?')"><i class="fa fa-trash"></i> Xóa đơn hàng</a>
+                <a href="~/Order" class="btn btn-sm btn-info">Quay lại</a>
+            }
+            @if (Model.Status == 2 || Model.Status == 3 || Model.Status == 4)
+            {
+                <a href="~/Order" class="btn btn-sm btn-info">Quay lại</a>
+            }
+        </div>
+    </div>
+    <div class="box-body form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Mã đơn hàng:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.OrderID</p>
+            </div>
+            <label class="control-label col-sm-2">Ngày lập đơn hàng:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.OrderTime</p>
+            </div>
+            <label class="control-label col-sm-2">Nhân viên phụ trách:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.EmployeeFullName</p>
+            </div>
+            <label class="control-label col-sm-2">Ngày nhận đơn hàng:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.AcceptTime</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Khách hàng:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.CustomerName</p>
+            </div>
+            <label class="control-label col-sm-2">Tên giao dịch:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.CustomerContactName</p>
+            </div>
+            <label class="control-label col-sm-2">Địa chỉ:</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">@Model.CustomerAddress</p>
+            </div>
+            <label class="control-label col-sm-2">Email:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.CustomerEmail</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2">Người giao hàng:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.ShipperName</p>
+            </div>
+            <label class="control-label col-sm-2">Điện thoại:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.ShipperPhone</p>
+            </div>
+            <label class="control-label col-sm-2">Nhận giao hàng lúc:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.ShippedTime</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2">Trạng thái đơn hàng:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.StatusDescription</p>
+            </div>
+            <label class="control-label col-sm-2">Thời điểm hoàn tất:</label>
+            <div class="col-sm-4">
+                <p class="form-control-static">@Model.FinishedTime</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <caption><h4>Danh sách mặt hàng thuộc đơn hàng</h4></caption>
+                <thead>
+                    <tr class="bg-primary">
+                        <th class="text-center">STT</th>
+                        <th class="text-center">Tên hàng</th>
+                        <th class="text-center">ĐVT</th>
+                        <th class="text-center">Số lượng</th>
+                        <th class="text-center">Giá</th>
+                        <th class="text-center">Thành tiền</th>
+                        <th style="width:80px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int stt = 0;
+                        foreach (var item in Model.Details)
+                        {
+                            <tr>
+                                <td class="text-center">@{stt += 1;} @stt</td>
+                                <td>@item.ProductName</td>
+                                <td class="text-center">@item.Unit</td>
+                                <td class="text-center">@item.Quantity</td>
+                                <td class="text-right">@item.SalePrice</td>
+                                <td class="text-right">@item.TotalPrice</td>
+                                <td class="text-right">
+                                    @if (Model.Status == 1)
+                                    {
+                                        <a href="~/Order/EditDetail/@item.OrderID/@item.ProductID" class="btn btn-xs btn-primary btn-modal">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="~/Order/DeleteDetail/@item.OrderID/@item.ProductID" class="btn btn-xs btn-danger" onclick="return confirm('Xóa mặt hàng này khỏi đơn hàng?')">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    }
+                                    @if (Model.Status == 2)
+                                    {
+                                        <a href="~/Order/EditDetail/@item.OrderID/@item.ProductID" class="btn btn-xs btn-primary btn-modal">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    }
+
+                                    @*<a href="~/Order/EditDetail/@item.OrderID/@item.ProductID" class="btn btn-xs btn-primary btn-modal">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="~/Order/DeleteDetail/@item.OrderID/@item.ProductID" class="btn btn-xs btn-danger" onclick="return confirm('Xóa mặt hàng này khỏi đơn hàng?')">
+                                            <i class="fa fa-trash"></i>
+                                        </a>*@
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="5" class="text-right">Tổng cộng:</th>
+                        @{
+                            decimal total = 0;
+                            foreach (var item in Model.Details)
+                            {
+
+                                total += item.TotalPrice;
+                            }
+                        }
+                        <th class="text-right">
+                            @total
+                    </th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+</div>
+
+<div id="dialogModal" class="modal fade" role="dialog">
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $(".btn-modal").click(function (e) {
+                e.preventDefault();
+                var link = $(this).prop("href");
+                $.ajax({
+                    url: link,
+                    type: "GET",
+                    async: false,
+                    error: function () {
+                        alert("Your request is not valid!");
+                    },
+                    success: function (data) {
+                        $("#dialogModal").empty();
+                        $("#dialogModal").html(data);
+                        $("#dialogModal").modal();
+                    }
+                });
+            });
+        })
+    </script>
+}

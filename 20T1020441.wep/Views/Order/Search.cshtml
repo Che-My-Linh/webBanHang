@@ -1,0 +1,69 @@
+﻿@model _20T1020441.Web.Models.OrderSearchOutput
+@{
+    Layout = null;
+}
+
+<p style="margin:10px 0 10px 0">
+    Có <strong>@string.Format("{0:N0}", Model.Rowcount)</strong> đơn hàng trong tổng số <strong>@string.Format("{0:N0}", @Model.PageCount) </strong> trang
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr class="bg-primary">
+                <th>Khách hàng</th>
+                <th>Ngày lập</th>
+
+                <th>Nhân viên phụ trách</th>
+                <th>Thời điểm duyệt</th>
+                <th>Người giao hàng</th>
+                <th>ngày nhận giao hàng</th>
+                <th>Thời điểm kết thúc</th>
+                <th>Trạng thái</th>
+                <th style="width:40px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Data)
+            {
+                <tr>
+                    <td>@item.CustomerName</td>
+                    <td>@item.OrderTime</td>
+                    <td>@item.EmployeeFullName</td>
+                    <td>@item.AcceptTime</td>
+                    <td>@item.ShipperName</td>
+                    <td>@item.ShippedTime</td>
+                    <td>@item.FinishedTime</td>
+                    <td>@item.Status</td>
+                    <td>
+                        <a href="~/Order/Details/@item.OrderID" class="btn btn-info btn-xs">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="col-sm-7 text-center">
+    <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+        <ul class="pagination">
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                if (i == Model.Page)
+                {
+                    <li class="paginate_button active">
+                        <a href="#">@i</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="paginate_button">
+                        <a href="javascript:;" onclick="doSearch(@i)">@i</a>
+                    </li>
+                }
+
+            }
+        </ul>
+    </div>
+</div>

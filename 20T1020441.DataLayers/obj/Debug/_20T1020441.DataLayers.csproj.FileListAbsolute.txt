@@ -1,0 +1,9 @@
+D:\20T1020441\20T1020441\20T1020441.DataLayers\bin\Debug\20T1020441.DataLayers.dll
+D:\20T1020441\20T1020441\20T1020441.DataLayers\bin\Debug\20T1020441.DataLayers.pdb
+D:\20T1020441\20T1020441\20T1020441.DataLayers\bin\Debug\DomainModels.dll
+D:\20T1020441\20T1020441\20T1020441.DataLayers\bin\Debug\DomainModels.pdb
+D:\20T1020441\20T1020441\20T1020441.DataLayers\obj\Debug\_20T1020441.DataLayers.csproj.AssemblyReference.cache
+D:\20T1020441\20T1020441\20T1020441.DataLayers\obj\Debug\_20T1020441.DataLayers.csproj.CoreCompileInputs.cache
+D:\20T1020441\20T1020441\20T1020441.DataLayers\obj\Debug\_20T1020441.DataLayers.csproj.CopyComplete
+D:\20T1020441\20T1020441\20T1020441.DataLayers\obj\Debug\20T1020441.DataLayers.dll
+D:\20T1020441\20T1020441\20T1020441.DataLayers\obj\Debug\20T1020441.DataLayers.pdb

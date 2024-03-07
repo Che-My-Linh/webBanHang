@@ -1,0 +1,103 @@
+﻿@model _20T1020441.DomainModels.ProductPhoto
+@{
+
+}
+
+<div class="box box-primary">
+    <div class="box-header with-border ">
+    </div>
+
+    <div class="box-body">
+        <form class="form-horizontal" action="~/Product/SavePhoto" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.PhotoID)
+            @Html.HiddenFor(m => m.ProductID)
+            <div class="form-group">
+                <label class="control-label col-sm-2">Ảnh:</label>
+                <div class="col-sm-10">
+                    <img id="photo"
+                         src="~/Photo/@Model.Photo"
+                         class="img img-bordered"
+                         alt="Product Image"
+                         style="width:150px" />
+                    @Html.HiddenFor(m => m.Photo)
+                    <input type="file"
+                           class="form-control"
+                           name="uploadPhoto"
+                           onchange="document.getElementById('photo').src = window.URL.createObjectURL(this.files[0])" />
+                    @Html.ValidationMessageFor(m => m.Photo, "", new { @style = "color: #f00" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    <div class="col-lg-offset-2 col-sm-10">
+                        <img id="photo"
+                             src="~/Photo/@Model.Photo"
+                             class="img img-bordered"
+                             alt="Product Image"
+                             style="width:150px" />
+                        @Html.HiddenFor(m => m.Photo)
+                        <input type="file"
+                               class="form-control"
+                               name="uploadPhoto"
+                               onchange="document.getElementById('photo').src = window.URL.createObjectURL(this.files[0])" />
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Mô tả:</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @placeholder = "", @autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(m => m.Description, "", new { @style = "color: #f00" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Thứ tự hiển thị:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" name="DisplayOrder" value="@Model.DisplayOrder" placeholder=" " autofocus />
+                    @Html.ValidationMessageFor(m => m.DisplayOrder, "", new { @style = "color: #f00" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-sm-10 checkbox">
+                    <label>
+                        @if (Model.PhotoID > 0)
+                        {
+                            <input id="isHidden" type="checkbox" name="IsHidden" value="@Model.IsHidden.ToString()"
+                                   onclick="document.getElementById('isHidden').value = document.getElementById('isHidden').checked;"
+                                   @(Model.IsHidden ? "checked=\"checked\"" : "")>
+                        }
+                        else
+                        {
+                            <input id="isHidden" type="checkbox" name="IsHidden" value="false"
+                                   onclick="document.getElementById('isHidden').value = document.getElementById('isHidden').checked;"
+                                   @(Model.IsHidden ? "checked=\"checked\"" : "")>
+                        }
+
+                        Ẩn ảnh (không hiển thị với khách hàng)
+                    </label>
+                    @*@Html.CheckBoxFor(m => m.IsHidden) Ẩn ảnh (không hiển thị với khách hàng)*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"></i> Lưu dữ liệu
+                    </button>
+                    <a class="btn btn-warning" href="~/product/edit/@Model.ProductID">
+                        <i class="fa fa-arrow-left"></i> Quay lại
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="box-footer text-center">
+    </div>
+
+</div>
+
+
+

@@ -1,0 +1,48 @@
+﻿@model _20T1020441.DomainModels.Shipper
+@{
+
+}
+
+<div class="box box-primary">
+    <div class="box-body">
+
+        <form class="form-horizontal" action="~/Shipper/Save" method="post">
+            <div class="form-group">
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m => m.ShipperID)
+                <label class="control-label col-sm-2" >Tên người giao hàng</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.ShipperName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ShipperName, "", new { @style = "color:#DC143C;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" >Phone</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Phone, "", new { @style = "color:#DC143C;" })
+                </div>
+            </div>
+
+
+            @*đây là hai nút trong Bổ sung DL*@
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-floppy-disk"></i> lưu dữ liệu
+                    </button>
+
+                    <a href="~/Shipper" class="btn btn-warning">
+                        quay lại
+                    </a>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

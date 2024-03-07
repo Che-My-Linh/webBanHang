@@ -1,0 +1,18 @@
+﻿@model _20T1020441.wep.Controllers.Person
+@{
+    
+}
+
+<h2>Person</h2>
+
+<form action="~/Test/input" method="post">
+    <div class="form-group">
+        <label>Tên: </label>
+        <input type="text" name="Name" value="@Model.Name" />
+        <label>Ngày sinh</label>
+        <input type="text" name="Birthday" value="@Model.Birthday" />
+        <label>Salary</label>
+        <input type="text" name="Salary" value="@Model.Salary" />
+        <button type="submit" style="width: 70px; height: 30px">Submit</button>
+    </div>
+</form>

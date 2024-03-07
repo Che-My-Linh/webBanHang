@@ -1,0 +1,62 @@
+﻿
+@model _20T1020441.Web.Models.SupplierSearchOutput
+@{
+    Layout = null;
+}
+<p>Có <strong>@string.Format("{0:N0}", Model.Rowcount)</strong> nhà cung cấp trong tổng số <strong>@string.Format("{0:N0}", @Model.PageCount) </strong>trang</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr class="bg-primary">
+            <th>Tên nhà cung cấp</th>
+            <th>Tên giao dịch</th>
+            <th>Địa chỉ</th>
+            <th>Điện thoại</th>
+            <th>Quốc gia</th>
+            <th>Thành phố</th>
+            <th>Mã bưu chính</th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>@item.SupplierName</td>
+                <td>@item.ContactName</td>
+                <td>@item.Address</td>
+                <td>@item.Phone</td>
+                <td>@item.Country</td>
+                <td>@item.City</td>
+                <td>@item.PostalCode</td>
+                <td class=text-right style="width: 120px">
+                    <a href="~/Supplier/Edit/@item.SupplierID" class="btn btn-success">Sửa</a>
+                    <a href="~/Supplier/Delete/@item.SupplierID" class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="col-sm-7 text-center">
+    <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+        <ul class="pagination">
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                if (i == Model.Page)
+                {
+                    <li class="paginate_button active">
+                        <a href="#">@i</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="paginate_button">
+                        <a href="javascript:;" onclick="doSearch(@i)">@i</a>
+                    </li>
+                }
+
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model _20T1020441.Web.Models.PaginationSearchInput
+@{
+    ViewBag.Title = "Quản lí nhà cung cấp";
+}
+
+<div class="box box-primary">
+    <div class="box-body">
+        <form id="formSearch" action="~/Supplier/Search">
+            <div class="input-group input-group-sm">
+                <input type="hidden" name="PageSize" value="@Model.PageSize" />
+                <input autofocus class="form-control" name="searchValue" placeholder="Search" type="text" value="@Model.SearchValue">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                        <strong> Tìm kiếm</strong>
+                    </button>
+                    <a href="~/Supplier/Create" class="btn bg-olive ">
+                        <i class="glyphicon glyphicon-plus-sign"></i>
+                        <strong> Bổ sung</strong>
+                    </a>
+                </span>
+            </div>
+        </form>
+
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#formSearch").submit(function (e) {
+                e.preventDefault();
+                doSearch(1);
+                return;
+            });
+            doSearch(@Model.Page);
+        })
+        function doSearch(page) {
+            var url = $("#formSearch").prop("action");
+            var postData = $("#formSearch").serializeArray();
+            postData.push({ "name": "page", "value": page });
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: postData,
+                error: function () {
+                    alert("Your request is not valid!");
+                },
+                success: function (data) {
+                    $("#searchResult").html(data);
+                }
+            });
+
+            return;
+        }
+    </script>
+}

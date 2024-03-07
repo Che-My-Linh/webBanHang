@@ -1,0 +1,11 @@
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\bin\Debug\20T1020441.BusinessLayers.dll
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\bin\Debug\20T1020441.BusinessLayers.pdb
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\bin\Debug\20T1020441.DataLayers.dll
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\bin\Debug\DomainModels.dll
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\bin\Debug\20T1020441.DataLayers.pdb
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\bin\Debug\DomainModels.pdb
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\obj\Debug\_20T1020441.BusinessLayers.csproj.AssemblyReference.cache
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\obj\Debug\_20T1020441.BusinessLayers.csproj.CoreCompileInputs.cache
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\obj\Debug\_20T1020441.BusinessLayers.csproj.CopyComplete
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\obj\Debug\20T1020441.BusinessLayers.dll
+D:\20T1020441\20T1020441\20T1020441.BusinessLayers\obj\Debug\20T1020441.BusinessLayers.pdb
